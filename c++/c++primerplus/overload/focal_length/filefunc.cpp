@@ -41,15 +41,15 @@ void file_it(ostream & os,double fo,const double fe[],int n)
 	os << "Focal length of objective: " << fo << " millimeters\n";
 	os.setf(ios::showpoint);
 	os.precision(1);
-	os.width(12);
+	os.width(13);
 	os << "f.l. eyepiece";
-	os.width(15);
+	os.width(14);
 	os << "magnification" << endl;
 	for(int index{};index < n;index++)
 	{
-		os.width(12);
+		os.width(13);
 		os << fe[index];
-		os.width(15);
+		os.width(14);
 		os << int(fo/fe[index] + 0.5) << endl;
 	}
 	os.setf(initial); //恢复初始化格式状态
