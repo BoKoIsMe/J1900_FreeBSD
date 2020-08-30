@@ -175,7 +175,6 @@ START:
 fillBufZero proc
 	pusha
 	xor eax,eax
-	mov hOutputConsole,eax
 	mov edi,offset buffer
 	mov ecx,MAX_PATH
 	rep stosb
