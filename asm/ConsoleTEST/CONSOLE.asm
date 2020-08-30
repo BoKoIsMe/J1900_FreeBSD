@@ -1,5 +1,3 @@
-;MASMPlus ´úÂëÄ£°å - ¿ØÖÆÌ¨³ÌĞò
-
 .386
 .model flat, stdcall
 option casemap :none
@@ -22,7 +20,7 @@ setConsoleColor proto color:DWORD
 	lpFMTHEX 	db "0x%08X",0
 	lpFMTDEC 	db "%d",0
 	lpcrlf 		db 0dh,0ah,0
-	lpConsoleTitle db "²é¿´¿ØÖÆÌ¨ÊôĞÔ",0
+	lpConsoleTitle db "æŸ¥çœ‹æ§åˆ¶å°å±æ€§",0
 	lpX 			db " x = ",0
 	lpY 			db " y = ",0
 	lpCol 		db " Col = ",0
@@ -31,12 +29,12 @@ setConsoleColor proto color:DWORD
 	lpBottom 	db " Bootom = ",0
 	lpLeft 		db " Left = ",0
 	lpRight 		db " Right = ",0
-	lpMsg1		db "µ±Ç°¿ØÖÆÌ¨¾ä±ú:",0
-	lpMsg2 		db "¿ØÖÆÌ¨»º³åÇø´óĞ¡:",0
-	lpMsg3 		db "¹â±êÎ»ÖÃ(·Çµ±Ç°):",0
-	lpMsg4 		db "´°Ìå´óĞ¡(µ¥Î»:ASCII×Ö·û):",0
-	lpMsg5 		db "×î´ó´°Ìå´óĞ¡:",0
-	lpMsg6 		db "µ±Ç°×Ö·ûÑÕÉ«ÊôĞÔ:",0
+	lpMsg1		db "å½“å‰æ§åˆ¶å°å¥æŸ„:",0
+	lpMsg2 		db "æ§åˆ¶å°ç¼“å†²åŒºå¤§å°:",0
+	lpMsg3 		db "å…‰æ ‡ä½ç½®(éå½“å‰):",0
+	lpMsg4 		db "çª—ä½“å¤§å°(å•ä½:ASCIIå­—ç¬¦):",0
+	lpMsg5 		db "æœ€å¤§çª—ä½“å¤§å°:",0
+	lpMsg6 		db "å½“å‰å­—ç¬¦é¢œè‰²å±æ€§:",0
 	
     enmCFC_Red          = FOREGROUND_INTENSITY or FOREGROUND_RED
     enmCFC_Green        = FOREGROUND_INTENSITY or FOREGROUND_GREEN
@@ -59,14 +57,14 @@ setConsoleColor proto color:DWORD
     enmCBC_HighWhite    = BACKGROUND_INTENSITY or BACKGROUND_RED or BACKGROUND_GREEN or BACKGROUND_BLUE
     enmCBC_Black        = 0
 	
-	;   0 = ºÚÉ«      8 = »ÒÉ«
-	;   1 = À¶É«      9 = µ­À¶É«
-	;   2 = ÂÌÉ«      A = µ­ÂÌÉ«
-	;   3 = Ç³ÂÌÉ«    B = µ­Ç³ÂÌÉ«
-	;   4 = ºìÉ«      C = µ­ºìÉ«
-	;   5 = ×ÏÉ«      D = µ­×ÏÉ«
-	;   6 = »ÆÉ«      E = µ­»ÆÉ«
-	;   7 = °×É«      F = ÁÁ°×É«
+	;   0 = é»‘è‰²      8 = ç°è‰²
+	;   1 = è“è‰²      9 = æ·¡è“è‰²
+	;   2 = ç»¿è‰²      A = æ·¡ç»¿è‰²
+	;   3 = æµ…ç»¿è‰²    B = æ·¡æµ…ç»¿è‰²
+	;   4 = çº¢è‰²      C = æ·¡çº¢è‰²
+	;   5 = ç´«è‰²      D = æ·¡ç´«è‰²
+	;   6 = é»„è‰²      E = æ·¡é»„è‰²
+	;   7 = ç™½è‰²      F = äº®ç™½è‰²
 	
 .data?
 	hOutputConsole DWORD ?
@@ -82,7 +80,7 @@ START:
 	invoke SetConsoleTitle,offset lpConsoleTitle
 	invoke SetConsoleTextAttribute,hOutputConsole,enmCFC_Green
 	invoke wsprintf,offset buffer,offset lpFMTHEX,hOutputConsole
-	;invoke locate,0,0			;Éè¶¨Êä³öÎÄ±¾µÄ×ø±ê
+	;invoke locate,0,0			;è®¾å®šè¾“å‡ºæ–‡æœ¬çš„åæ ‡
 	invoke StdOut,offset lpMsg1
 	invoke SetConsoleTextAttribute,hOutputConsole,enmCFC_Yellow
 	invoke StdOut,offset buffer
@@ -170,7 +168,7 @@ START:
 	invoke StdOut,offset lpcrlf
 	
 	invoke setConsoleColor,crtConsoleAtt.wAttributes
-	;ÔİÍ£ÏÔÊ¾,»Ø³µ¼ü¹Ø±Õ
+	;æš‚åœæ˜¾ç¤º,å›è½¦é”®å…³é—­
 	;invoke StdIn,addr buffer,sizeof buffer
 	invoke ExitProcess,0
 	
