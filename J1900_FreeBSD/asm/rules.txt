@@ -1,0 +1,2 @@
+nasm -f elf(or elf64) -o <output file name on here> <input file name on here>
+ld -melf_i386_fbsd -s -o <output file name on here> <input file name on here>
