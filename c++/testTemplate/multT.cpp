@@ -1,10 +1,10 @@
 #include <iostream>
 template <typename T>
-T acc(T a,T b);
+auto acc(T a,T b) ->decltype(a + b);
 int main(int argc,char * argv[])
 {
 	using namespace std;
-	int i= 0,j = -20;
+	auto i = 0.0,j = -20.0;
 	cin >> i;
 	auto x =acc(i,j);
 	cout << x << endl;
@@ -12,7 +12,7 @@ int main(int argc,char * argv[])
 }
 
 template <typename T>
-T acc(T a,T b)
+auto acc(T a,T b) ->decltype(a + b)
 {
 	return a + b;
 }
